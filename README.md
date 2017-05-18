@@ -39,7 +39,7 @@ First, get the name of the running Mirth Connect Server container:
 
     $ docker ps
     CONTAINER ID        IMAGE                                 COMMAND                CREATED             STATUS              PORTS                                              NAMES
-    bf63b2b30e2c        dhashimov/mirth-connect          "java -jar mirth-ser   26 minutes ago      Up 26 minutes       0.0.0.0:32769->8080/tcp, 0.0.0.0:32768->8443/tcp   fervent_torvalds
+    ddace636fcc6        dhashimov/mirth-connect          "java -jar mirth-ser   26 minutes ago      Up 26 minutes       0.0.0.0:32769->8080/tcp, 0.0.0.0:32768->8443/tcp   fervent_torvalds
 
 Using the name, link the Mirth Connect Server container to the Mirth Shell container:
 
