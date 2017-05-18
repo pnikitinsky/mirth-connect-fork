@@ -29,7 +29,7 @@ Create a configuration file for Mirth Connect Server from the default configurat
 
 Launch the container and mount the configuration file:
 
-    $ docker run -d -P -v ~/mirth.properties:/opt/mirth-connect/conf/mirth.properties brandonstevens/mirth-connect
+    $ docker run -d -P -v ~/mirth.properties:/opt/mirth-connect/conf/mirth.properties DHashimov/mirth-connect
 
 ## Running Mirth Shell
 
