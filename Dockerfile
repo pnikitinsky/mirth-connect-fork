@@ -18,9 +18,10 @@ RUN useradd -u 1000 mirth && \
   # verify that the binary works
   gosu nobody true
 
+# Expose mirth appdata volume
 VOLUME /opt/mirth-connect/appdata
 
-# Install Mirth-Connect
+# Download and install Mirth Connect
 RUN \
   cd /tmp && \
   wget https://s3.amazonaws.com/downloads.mirthcorp.com/connect/$MIRTH_CONNECT_VERSION/mirthconnect-$MIRTH_CONNECT_VERSION-unix.tar.gz && \
@@ -30,18 +31,13 @@ RUN \
   mv Mirth\ Connect/* /opt/mirth-connect/ && \
   chown -R mirth /opt/mirth-connect
 
-# remove unused client & set options and data volume
 WORKDIR /opt/mirth-connect
-RUN rm -rf cli-lib manager-lib && \
-    rm mirth-cli-launcher.jar mirth-manager-launcher.jar mccommand mcmanager && \
-    # set spool volume for messages exchange with Docker host ----
-    mkdir /var/spool/mirth && \
-    chown -R mirth /var/spool/mirth
 
-VOLUME /var/spool/mirth
+# Expose the default Mirth Ports
 EXPOSE 8080 8443
 
 COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["java", "-jar", "mirth-server-launcher.jar"]
