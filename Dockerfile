@@ -1,4 +1,4 @@
-FROM arm64v8/openjdk:11-jre
+FROM openjdk:11-jre
 
 ENV MIRTH_CONNECT_VERSION 3.11.0.b2609
 
